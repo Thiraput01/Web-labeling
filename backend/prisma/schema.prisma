@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  username  String     @unique
+  password  String
+  userData  UserData[]
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  @@map("user")
+}
+
+model UserData {
+  id         String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @map("user_id")
+  data       Data     @relation(fields: [dataId], references: [id])
+  dataId     String   @map("data_id")
+  isLabelled Boolean  @default(false) @map("is_labelled")
+  createdAt  DateTime @default(now()) @map("created_at")
+  answer     String?
+
+  @@map("user_data")
+}
+
+model Data {
+  id          String     @id @default(cuid())
+  title       String
+  url         String
+  coordinateX Int        @map("coordinate_x")
+  coordinateY Int        @map("coordinate_y")
+  dataSet     DataSet    @relation(fields: [dataSetId], references: [id])
+  dataSetId   String     @map("data_set_id")
+  userData    UserData[]
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  type        AnswerType @default(CHOICE)
+
+  @@map("data")
+}
+
+model DataSet {
+  id        String   @id @default(cuid())
+  name      String
+  data      Data[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("data_set")
+}
+
+enum AnswerType {
+  CHOICE
+  INPUT
+}
