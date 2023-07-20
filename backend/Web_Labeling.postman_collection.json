@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "cdca8c08-1638-4fa9-b931-68edca84d7df",
+		"name": "Web Labeling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26897423"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "findUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "%3A%7B%22accessToken%22%3A%22eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGs5dThsa3MwMDAwcnN0bWQ4bDZ5eG9jIiwiaWF0IjoxNjg5Nzc4MDc4LCJleHAiOjE2ODk3ODE2Nzh9.FeaR7hCCtp-klJbuJBci99KC8cITY5aZ3-7fH_CcRbA%22%7D",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/users/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/clk6yhr7k0001rsuxwmd9tyrq",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"clk6yhr7k0001rsuxwmd9tyrq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLabelledDataByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/labelled-data/regisiter1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"labelled-data",
+								"regisiter1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUnlabelledDataByUsername Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/unlabelled-data/regisiter1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"unlabelled-data",
+								"regisiter1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/clk6yhr7k0001rsuxwmd9tyrq",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"clk6yhr7k0001rsuxwmd9tyrq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/users/1",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "data set",
+			"item": [
+				{
+					"name": "findDataSets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/data-sets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data-sets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findDataSet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/data-sets/clk6yosd50002rsuxkpc7tg1l",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data-sets",
+								"clk6yosd50002rsuxkpc7tg1l"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createDataSet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dataset2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data-sets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data-sets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateDataSet",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data-sets/clk6yhr7k0001rsuxwmd9tyrq",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data-sets",
+								"clk6yhr7k0001rsuxwmd9tyrq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDataSet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data-sets/clk6yhr7k0001rsuxwmd9tyrq",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data-sets",
+								"clk6yhr7k0001rsuxwmd9tyrq"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "data",
+			"item": [
+				{
+					"name": "findManyData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUniqueData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/data/clk6yhr7k0001rsuxwmd9tyrq",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data",
+								"clk6yhr7k0001rsuxwmd9tyrq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"data3\",\n    \"url\": \"http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRDXSoED1o8CRC6kaNIw4pXYmh6wS4iukEzHaoPa_T32V46Qh9ZtSu03LqeCd5hhNEOuN0c1u72SrzWjBfgJ_g\",\n    \"coordinateX\": 10,\n    \"coordinateY\": 11,\n    \"dataSetId\": \"clk899q2w0002rssh5kibbqrx\",\n    \"type\": \"INPUT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateData",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRDXSoED1o8CRC6kaNIw4pXYmh6wS4iukEzHaoPa_T32V46Qh9ZtSu03LqeCd5hhNEOuN0c1u72SrzWjBfgJ_g\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data/clk6ywotf0004rsytb0tm3pel",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data",
+								"clk6ywotf0004rsytb0tm3pel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteData",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/data/clk6z91gc0003rs9aykhtbmg0",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"data",
+								"clk6z91gc0003rs9aykhtbmg0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user data",
+			"item": [
+				{
+					"name": "findManyUserData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user-data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findUniqueUserData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user-data/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserDataByUserIdAndDataId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":, \n    \"dataId\":\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data/data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUserData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"clk8991dp0000rsshz70os5rm\",\n    \"dataId\": \"clk89dk010003rszc1rm6xxe6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserData",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"answer\": \"far\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data/clk89en6s0005rszcmrd6ct92",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data",
+								"clk89en6s0005rszcmrd6ct92"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markAsLabelled",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"answer\": \"back\",\n    \"userId\":\"clk8991dp0000rsshz70os5rm\",\n    \"dataId\":\"clk8ds4kg000drsblbqbocehn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data/mark-as-labelled",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data",
+								"mark-as-labelled"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "markAsLabelled Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"answer\": \"back\",\n    \"userId\":\"clk8991dp0000rsshz70os5rm\",\n    \"dataId\":\"clk8ds4kg000drsblbqbocehn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data/update-answer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data",
+								"update-answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserLabeledData",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"regisiter2\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"test1\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
