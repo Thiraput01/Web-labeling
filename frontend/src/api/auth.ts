@@ -1,3 +1,4 @@
+import { log } from "console";
 import api from "./api";
 
 interface RegisterData {
@@ -6,6 +7,9 @@ interface RegisterData {
 }
 
 export const register = ({ username, password }: RegisterData) => {
+  console.log("register", username, password);
+  console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+
   return api.post("/auth/register", {
     username,
     password,

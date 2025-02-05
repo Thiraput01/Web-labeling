@@ -22,7 +22,7 @@ const RegisterPage: React.FC = () => {
       setRegistrationError(null);
     } catch (error) {
       console.error("Registration failed:", error);
-      setRegistrationError("Username already exists. Please try again.");
+      setRegistrationError("Username already exists. Please try again. ");
     }
   };
 
