@@ -27,36 +27,35 @@ const DataPage: React.FC = () => {
   const [data, setData] = useAtom(dataAtom);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  if (typeof window !== "undefined") {
-    if (!localStorage.getItem("isLogin")) {
+  useEffect(() => {
+    if (typeof window !== "undefined" && !localStorage.getItem("isLogin")) {
       router.push("/login");
     }
-  }
+  }, [router]);
 
   useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await getMe();
+        setUsername(res.data.username);
+
+        const unlabelledData = await getUnlabelledDataByUsername(
+          res.data.username
+        );
+        setUnlabelledData(unlabelledData.data);
+
+        const labelledData = await getLabelledDataByUsername(res.data.username);
+        setLabelledData(labelledData.data);
+
+        setIsLoading(false);
+      } catch {
+        router.push("/login");
+      }
+    };
+
     fetchAllData();
-  }, []);
-
-  const fetchAllData = async () => {
-    try {
-      setIsLoading(true);
-
-      const res = await getMe();
-      setUsername(res.data.username);
-
-      const unlabelledData = await getUnlabelledDataByUsername(
-        res.data.username
-      );
-      setUnlabelledData(unlabelledData.data);
-
-      const labelledData = await getLabelledDataByUsername(res.data.username);
-      setLabelledData(labelledData.data);
-
-      setIsLoading(false);
-    } catch {
-      router.push("/login");
-    }
-  };
+  }, [router]);
 
   const handleLabelData = (dataItem: DataItem) => {
     setData(dataItem);
