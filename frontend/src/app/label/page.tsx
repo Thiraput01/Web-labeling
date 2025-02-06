@@ -11,7 +11,6 @@ import Navbar from "@/components/navbar";
 import { UserData, dataAtom } from "@/atom/data-atom";
 import { useRouter } from "next/navigation";
 import { getMe } from "@/api/user";
-import Image from "next/image";
 
 const LabelPage: React.FC = () => {
   const router = useRouter();
@@ -28,41 +27,39 @@ const LabelPage: React.FC = () => {
     answer: "",
   });
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && !localStorage.getItem("isLogin")) {
+  if (typeof window !== "undefined") {
+    if (!localStorage.getItem("isLogin")) {
       router.push("/login");
     }
-  }, [router]);
+  }
+
+  if (!data) {
+    router.push("/data");
+  }
 
   useEffect(() => {
-    if (!data) {
+    fetchMe();
+  }, []);
+
+  const fetchMe = async () => {
+    try {
+      setIsLoading(true);
+      const user = await getMe();
+      setUsername(user.data.username);
+      setUserId(user.data.id);
+      const userData = await getUserDataByUserIdAndDataId(
+        user.data.id,
+        data ? data.id : ""
+      );
+      setUserData(userData.data);
+      if (userData.data.isLabelled) {
+        setSelectedLabel(userData.data.answer);
+      }
+      setIsLoading(false);
+    } catch (error) {
       router.push("/data");
     }
-  }, [data, router]);
-
-  useEffect(() => {
-    const fetchMe = async () => {
-      try {
-        setIsLoading(true);
-        const user = await getMe();
-        setUsername(user.data.username);
-        setUserId(user.data.id);
-        const userData = await getUserDataByUserIdAndDataId(
-          user.data.id,
-          data ? data.id : ""
-        );
-        setUserData(userData.data);
-        if (userData.data.isLabelled) {
-          setSelectedLabel(userData.data.answer);
-        }
-        setIsLoading(false);
-      } catch (error) {
-        router.push("/data");
-      }
-    };
-
-    fetchMe();
-  }, [data, router]);
+  };
 
   const handleLabelSelection = (e: any) => {
     setSelectedLabel(e.target.value);
@@ -91,8 +88,8 @@ const LabelPage: React.FC = () => {
           <Spin />
         ) : (
           <>
-            <Image
-              src={data?.url || ""}
+            <img
+              src={data?.url}
               width={500}
               height={500}
               alt="Labelled Image"
