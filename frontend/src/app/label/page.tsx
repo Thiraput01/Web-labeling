@@ -27,15 +27,19 @@ const LabelPage: React.FC = () => {
     answer: "",
   });
 
-  if (typeof window !== "undefined") {
-    if (!localStorage.getItem("isLogin")) {
-      router.push("/login");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!localStorage.getItem("isLogin")) {
+        router.push("/login");
+      }
     }
-  }
+  }, []);
 
-  if (!data) {
-    router.push("/data");
-  }
+  useEffect(() => {
+    if (!data) {
+      router.push("/data");
+    }
+  }, [data]);
 
   useEffect(() => {
     fetchMe();
