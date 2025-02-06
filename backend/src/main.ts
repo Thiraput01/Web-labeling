@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(
     cors({
-      origin: 'http://localhost:3000',
+      origin: ['https://web-labeling-frontend.vercel.app'],
       methods: '*',
       allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
