@@ -8,7 +8,11 @@ interface RegisterData {
 
 export const register = ({ username, password }: RegisterData) => {
   console.log("register", username, password);
-  console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+  console.log("server: ", process.env.NEXT_PUBLIC_SERVER_URL);
+  console.log("Sending request to backend:", {
+    username,
+    password,
+  });
 
   return api.post("/auth/register", {
     username,
