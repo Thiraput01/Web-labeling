@@ -22,7 +22,10 @@ export class AuthController {
   ) {
     try {
       const data = await this.authService.registerUser(registerDto);
-      res.cookie('access_token', data.accessToken, { httpOnly: true });
+      res.cookie('access_token', data.accessToken, {
+        httpOnly: true,
+        sameSite: 'none',
+      });
       return data.accessToken;
     } catch (error) {
       throw new BadRequestException('Failed to register user');
@@ -39,7 +42,10 @@ export class AuthController {
       loginDto.username,
       loginDto.password,
     );
-    res.cookie('access_token', data.accessToken, { httpOnly: true });
+    res.cookie('access_token', data.accessToken, {
+      httpOnly: true,
+      sameSite: 'none',
+    });
     return data.accessToken;
   }
 }

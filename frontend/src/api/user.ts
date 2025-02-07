@@ -25,7 +25,5 @@ export const getUnlabelledDataByUsername = (username: string) => {
 };
 
 export const getMe = () => {
-  return api.get(`/users/me`, {
-    withCredentials: true,
-  });
+  return api.get(`/users/me`);
 };
