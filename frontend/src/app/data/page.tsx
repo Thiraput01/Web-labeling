@@ -41,16 +41,23 @@ const DataPage: React.FC = () => {
     try {
       setIsLoading(true);
 
+      console.log("trying to GetMe. . .");
       const res = await getMe();
+      console.log("GetMe response", res);
+
       setUsername(res.data.username);
 
+      console.log("trying to getUnlabelledDataByUsername. . .");
       const unlabelledData = await getUnlabelledDataByUsername(
         res.data.username
       );
       setUnlabelledData(unlabelledData.data);
+      console.log("unlabelledData success");
 
+      console.log("trying to getLabelledDataByUsername");
       const labelledData = await getLabelledDataByUsername(res.data.username);
       setLabelledData(labelledData.data);
+      console.log("labelledData success");
 
       setIsLoading(false);
     } catch {
