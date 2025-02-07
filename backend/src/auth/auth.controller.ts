@@ -24,6 +24,7 @@ export class AuthController {
       const data = await this.authService.registerUser(registerDto);
       res.cookie('access_token', data.accessToken, {
         httpOnly: true,
+        secure: true,
         sameSite: 'none',
       });
       return data.accessToken;
@@ -44,6 +45,7 @@ export class AuthController {
     );
     res.cookie('access_token', data.accessToken, {
       httpOnly: true,
+      secure: true,
       sameSite: 'none',
     });
     return data.accessToken;
